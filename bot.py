@@ -25,6 +25,17 @@ class Bot(Client):
         )
         self.LOGGER = self.get_logger()
 
+    def get_logger(self):
+        import logging
+        logger = logging.getLogger('bot_logger')
+        logger.setLevel(logging.DEBUG)
+        ch = logging.StreamHandler()
+        ch.setLevel(logging.DEBUG)
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        ch.setFormatter(formatter)
+        logger.addHandler(ch)
+        return logger
+
     async def start(self):
         await super().start()
         usr_bot_me = await self.get_me()
@@ -81,6 +92,17 @@ class Bot2(Client):
             bot_token=TG_BOT_TOKEN_2
         )
         self.LOGGER = self.get_logger()
+
+    def get_logger(self):
+        import logging
+        logger = logging.getLogger('bot_logger')
+        logger.setLevel(logging.DEBUG)
+        ch = logging.StreamHandler()
+        ch.setLevel(logging.DEBUG)
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        ch.setFormatter(formatter)
+        logger.addHandler(ch)
+        return logger
 
     async def start(self):
         await super().start()
